@@ -1,3 +1,4 @@
+/* ===================== Dependencies =================== */
 const dotenv = require("dotenv");
 dotenv.config();
 const express = require("express");
@@ -12,13 +13,16 @@ const authController = require("./controllers/auth.js");
 // Set the port from environment variable or default to 3000
 const port = process.env.PORT ? process.env.PORT : "3000";
 const MongoStore = require("connect-mongo");
-mongoose.connect(process.env.MONGODB_URI);
 const isSignedIn = require("./middleware/is-signed-in.js");
 const passUserToView = require("./middleware/pass-user-to-view.js");
-
+const applicationsController = require("./controllers/applications.js");
+/* ===================== DB Connection =================== */
+mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on("connected", () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
+
+/* ===================== Middleware =================== */
 
 // Middleware to parse URL-encoded data from forms
 app.use(express.urlencoded({ extended: false }));
@@ -40,12 +44,15 @@ app.use(
 
 app.use(passUserToView);
 
+/* ===================== Routes =================== */
 app.get("/", async (req, res) => {
   res.render("index.ejs");
 });
 
 app.use("/auth", authController);
-
+app.use(isSignedIn);
+app.use("/users/:userId/applications", applicationsController);
+/* ===================== Server =================== */
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
 });
