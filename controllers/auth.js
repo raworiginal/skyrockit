@@ -22,6 +22,7 @@ router.post("/sign-up", async (req, res) => {
 
   req.session.user = {
     username: user.username,
+    _id: user._id,
   };
 
   req.session.save(() => {
