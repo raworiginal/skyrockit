@@ -4,5 +4,12 @@
     <h1 class="title">Your Apps</h1>
     <a class="button is-link" href="/users/<%=user._id%>/applications/new">Add an App</a>
   </div>
+  <div class="container is-fluid">
+    <ul>
+    <% applications.forEach((application) => { %>
+      <li><%= application.title %> @ <%= application.company %></li>
+      <% }); %>
+    </ul>
+  </div>
 </body>
 </html>
