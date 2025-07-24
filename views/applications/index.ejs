@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Apps</title>
-  </head>
-  <body>
-    <h1>Your Apps</h1>
-  </body>
+<%- include('../partials/_html-head.ejs', {title: 'Applications'}) %>
+<%- include('../partials/_nav-bar.ejs') %>
+  <div class="container is-fluid">
+    <h1 class="title">Your Apps</h1>
+    <a class="button is-link" href="/users/<%=user._id%>/applications/new">Add an App</a>
+  </div>
+</body>
 </html>
