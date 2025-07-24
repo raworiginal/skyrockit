@@ -1,4 +1,40 @@
-<%- include('../partials/_html-head.ejs', {title: 'Applications'}) %> <%- include('../partials/_nav-bar.ejs') %>
-    <h1>Add a New App</h1>
-  </body>
+<%- include("../partials/_html-head.ejs", {title: "New App"}) %> 
+<%- include("../partials/_nav-bar.ejs") %>
+<div class="container is-fluid">
+  <h1 class="title">Add a New App</h1>
+  <div class="content">
+    <form action="/users/<%= user._id %>/applications" method="post">
+      <div class="field">
+        <label class="label" for="company">Company:</label>
+        <input type="text" name="company" id="company" />
+      </div>
+      <div class="field">
+        <label class="label" for="title">Title:</label>
+        <input type="text" name="title" id="title" />
+      </div>
+      <div class="field">
+        <label class="label" for="notes">Notes:</label>
+        <textarea name="notes" id="notes"></textarea>
+      </div>
+      <div class="field">
+        <label class="label" for="postingLink">Posting Link:</label>
+        <input type="text" name="postingLink" id="postingLink" />
+      </div>
+      <div class="select">
+        <select id="status" name="status">
+          <option value="interested">Interested</option>
+          <option value="applied">Applied</option>
+          <option value="interviewing">Interviewing</option>
+          <option value="rejected">Rejected</option>
+          <option value="accepted">Accepted</option>
+        </select>
+      </div>
+      <div class="control">
+        <button class="button is-primary" type="submit">SUBMIT</button>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+
 </html>
