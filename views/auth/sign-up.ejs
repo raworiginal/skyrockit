@@ -1,28 +1,22 @@
 <%- include('../partials/_html-head.ejs', {title: 'Sign-Up'}) %>
 <%- include('../partials/_nav-bar.ejs') %>
-<div class="container is-fluid">
-  <h1 class="title">Create a new account!</h1>
-
-  <form action="/auth/sign-up" method="POST">
-    <div class="field">
+<main class="container">
+  <h1>Create a new account!</h1>
+  <div class="container">
+    <form action="/auth/sign-up" method="POST">
       <label class="label" for="username">Username:</label>
       <input type="text" name="username" id="username" />
-    </div>
-    
-    <div class="field">
+
       <label class="label" for="password">Password:</label>
       <input type="password" name="password" id="password" />
-    </div>
 
-    <div class="field">
       <label for="confirmPassword">Confirm Password:</label>
       <input type="password" name="confirmPassword" id="confirmPassword" />
-    </div>
-    
-    <div class="field">
+
       <button class="button" type="submit">Sign up</button>
-    </div>
-  </form>
+    </form>
   </div>
+</main>
 </body>
+
 </html>
