@@ -1,15 +1,20 @@
 <%- include('../partials/_html-head.ejs', {title: 'Applications'}) %>
 <%- include('../partials/_nav-bar.ejs') %>
-  <div class="container is-fluid">
-    <h1 class="title">Your Apps</h1>
-    <a class="button is-link" href="/users/<%=user._id%>/applications/new">Add an App</a>
-  </div>
-  <div class="container is-fluid">
-    <ul>
-    <% applications.forEach((application) => { %>
-      <li><%= application.title %> @ <%= application.company %></li>
-      <% }); %>
-    </ul>
-  </div>
+<div class="container">
+  <h1 class="title">Your Apps</h1>
+  <a href="/users/<%=user._id%>/applications/new">Add an App</a>
+</div>
+<div class="container">
+  <ul>
+    <% applications.forEach((application)=>{ %>
+    <li>
+      <a href="/users/<%= user._id %>/applications/<%= application._id %>">
+        <%= application.title %> @ <%= application.company %>
+      </a>
+    </li>
+    <% }) %>
+  </ul>
+</div>
 </body>
+
 </html>

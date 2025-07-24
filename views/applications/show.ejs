@@ -1,0 +1,12 @@
+<%- include('../partials/_html-head.ejs', {title: 'Sign-In'}) %>
+<%- include('../partials/_nav-bar.ejs') %>
+<h1><%= application.title %> at <%= application.company %></h1>
+<% if (application.notes) { %>
+<p>Notes: <%= application.notes %></p>
+<% } %> <% if (application.postingLink) { %>
+<a href="<%= application.postingLink %>">View job posting</a>
+<% } %>
+<p>Current Status: <%= application.status %></p>
+</body>
+
+</html>
